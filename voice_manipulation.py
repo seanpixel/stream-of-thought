@@ -1,8 +1,12 @@
 from elevenlabs import clone, generate, play, stream
 import elevenlabs
 import os
+from dotenv import load_dotenv
 
-elevenlabs.set_api_key(os.getenv("ELEVENLABS_API_KEY"))
+load_dotenv()
+
+elevenlabs_key = os.getenv("ELEVENLABS_API_KEY")
+elevenlabs.set_api_key(elevenlabs_key)
 
 
 # generates a voice that can be used to generate audio using an audio file

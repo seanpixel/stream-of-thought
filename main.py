@@ -34,8 +34,11 @@ print(stream_of_thought)
 # Continuously generate stream of thought while streaming audio
 while True:
     with ThreadPoolExecutor(max_workers=2) as executor:
-        future2 = executor.submit(stream_audio, username, stream_of_thought)
         future1 = executor.submit(generate_stream_of_thought, stream_of_thought)
+
         stream_of_thought = future1.result()
+
+        future2 = executor.submit(stream_audio, username, stream_of_thought)
+        
         
         
